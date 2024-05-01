@@ -1,16 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Amplify } from 'aws-amplify';
 import { Authenticator, View } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css'; // default theme
 
 import './index.css';
 import App from './App';
+import conf from './aws-exports'
+
+Amplify.configure(conf);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Authenticator.Provider>
-      <App />
+      <View><App /></View>
     </Authenticator.Provider>
   </React.StrictMode>
 );

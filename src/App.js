@@ -1,14 +1,15 @@
 import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
-import Home from './Pages/Home';
+
+import Home from "./Pages/Home";
 
 const App = () => {
-  const { authStatus } = useAuthenticator(context => [context.authStatus]);
+  const { route, authStatus } = useAuthenticator(context => [context]);
 
-  // Use the value of authStatus to decide which page to render
- return (
+  // Use the value of route to decide which page to render
+  return (
     <>
       {authStatus === 'configuring' && 'Loading...'}
-      {authStatus !== 'authenticated' ? <Authenticator /> : <Home />}
+      {route === 'authenticated' ? <Home /> : <Authenticator />}
     </>
   );
 };

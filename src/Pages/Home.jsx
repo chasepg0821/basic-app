@@ -5,7 +5,7 @@ const Home = () => {
 
   return (
     <>
-      <h2>Welcome, {user.username}!</h2>
+      <h2>Welcome, {user.userId}!</h2>
       <button onClick={signOut}>Sign Out</button>
     </>
   );
