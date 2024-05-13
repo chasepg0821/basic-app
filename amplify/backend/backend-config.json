@@ -1,5 +1,27 @@
 {
   "api": {
+    "AdminQueries": {
+      "authorizationType": "AMAZON_COGNITO_USER_POOLS",
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "Team00BasicApp"
+        },
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "AdminQueries1aca73df"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
     "basicappapi": {
       "dependsOn": [
         {
@@ -53,6 +75,20 @@
     }
   },
   "function": {
+    "AdminQueries1aca73df": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "Team00BasicApp"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "Team00basicappapi": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -60,6 +96,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_AdminQueries1aca73df_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AdminQueries1aca73df"
+        }
+      ]
+    },
+    "AMPLIFY_function_AdminQueries1aca73df_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AdminQueries1aca73df"
+        }
+      ]
+    },
     "AMPLIFY_function_Team00basicappapi_deploymentBucketName": {
       "usedBy": [
         {

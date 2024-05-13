@@ -20,10 +20,15 @@
         "Team00basicappapi": {
           "deploymentBucketName": "amplify-team00basicapp-staging-b59f5-deployment",
           "s3Key": "amplify-builds/Team00basicappapi-496d7633552f32345463-build.zip"
+        },
+        "AdminQueries1aca73df": {
+          "deploymentBucketName": "amplify-team00basicapp-staging-b59f5-deployment",
+          "s3Key": "amplify-builds/AdminQueries1aca73df-7243464f7642534e2b6a-build.zip"
         }
       },
       "api": {
-        "basicappapi": {}
+        "basicappapi": {},
+        "AdminQueries": {}
       }
     }
   }
