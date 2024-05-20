@@ -1,18 +1,24 @@
-import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
+import React from 'react'
+import { RouterProvider, createRouter } from '@tanstack/react-router'
+import { routeTree } from './routeTree.gen'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-import Home from "./Pages/Home";
+const queryClient = new QueryClient()
+
+// Set up a Router instance
+const router = createRouter({
+  routeTree,
+})
 
 const App = () => {
-  const { route, authStatus } = useAuthenticator(context => [context]);
-
-  // Use the value of route to decide which page to render
   return (
     <>
-      {authStatus === 'configuring' && 'Loading...'}
-      {route === 'authenticated' ? <Home /> : <Authenticator />}
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </>
-  );
-};
+  )
+}
 
 export default App;
 

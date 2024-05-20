@@ -2,9 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Amplify } from 'aws-amplify';
 import { Authenticator, View } from '@aws-amplify/ui-react';
-import '@aws-amplify/ui-react/styles.css'; // default theme
+import '@aws-amplify/ui-react/styles.css'; 
 
-import './index.css';
 import App from './App';
 import conf from './aws-exports'
 
