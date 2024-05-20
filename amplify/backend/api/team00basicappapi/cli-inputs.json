@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/api": {
+      "name": "/api",
+      "lambdaFunction": "team00basicappc39d8893",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

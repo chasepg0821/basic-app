@@ -1,0 +1,43 @@
+{
+  "api": {
+    "team00basicappapi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "team00basicappc39d8893"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "team00basicappc39d8893": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_team00basicappc39d8893_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "team00basicappc39d8893"
+        }
+      ]
+    },
+    "AMPLIFY_function_team00basicappc39d8893_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "team00basicappc39d8893"
+        }
+      ]
+    }
+  }
+}
