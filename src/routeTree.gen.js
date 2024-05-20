@@ -12,10 +12,10 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as PostsImport } from './routes/posts'
-import { Route as LayoutImport } from './routes/_layout'
+import { Route as ProtectedImport } from './routes/_protected'
 import { Route as IndexImport } from './routes/index'
-import { Route as LayoutLayoutBImport } from './routes/_layout/layout-b'
-import { Route as LayoutLayoutAImport } from './routes/_layout/layout-a'
+import { Route as ProtectedLayoutBImport } from './routes/_protected/layout-b'
+import { Route as ProtectedHomeImport } from './routes/_protected/home'
 
 // Create/Update Routes
 
@@ -24,8 +24,8 @@ const PostsRoute = PostsImport.update({
   getParentRoute: () => rootRoute,
 })
 
-const LayoutRoute = LayoutImport.update({
-  id: '/_layout',
+const ProtectedRoute = ProtectedImport.update({
+  id: '/_protected',
   getParentRoute: () => rootRoute,
 })
 
@@ -34,23 +34,23 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 })
 
-const LayoutLayoutBRoute = LayoutLayoutBImport.update({
+const ProtectedLayoutBRoute = ProtectedLayoutBImport.update({
   path: '/layout-b',
-  getParentRoute: () => LayoutRoute,
+  getParentRoute: () => ProtectedRoute,
 })
 
-const LayoutLayoutARoute = LayoutLayoutAImport.update({
-  path: '/layout-a',
-  getParentRoute: () => LayoutRoute,
+const ProtectedHomeRoute = ProtectedHomeImport.update({
+  path: '/home',
+  getParentRoute: () => ProtectedRoute,
 })
 
 // Create and export the route tree
 
 export const routeTree = rootRoute.addChildren({
   IndexRoute,
-  LayoutRoute: LayoutRoute.addChildren({
-    LayoutLayoutARoute,
-    LayoutLayoutBRoute,
+  ProtectedRoute: ProtectedRoute.addChildren({
+    ProtectedHomeRoute,
+    ProtectedLayoutBRoute,
   }),
   PostsRoute,
 })

@@ -31,7 +31,7 @@ function RootComponent() {
           Posts
         </Link>{' '}
         <Link
-          to="/layout-b"
+          to="/layout-a"
           activeProps={{
             className: 'font-bold',
           }}
