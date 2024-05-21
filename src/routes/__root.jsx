@@ -31,12 +31,12 @@ function RootComponent() {
           Posts
         </Link>{' '}
         <Link
-          to="/layout-a"
+          to="/profile"
           activeProps={{
             className: 'font-bold',
           }}
         >
-          Layout
+          Profile
         </Link>
       </div>
       <hr />

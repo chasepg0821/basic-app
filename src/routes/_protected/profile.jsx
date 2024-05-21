@@ -2,11 +2,11 @@ import * as React from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { useAuthenticator } from '@aws-amplify/ui-react';
 
-export const Route = createFileRoute('/_protected/home')({
-  component: Home,
+export const Route = createFileRoute('/_protected/profile')({
+  component: Profile,
 })
 
-function Home() {
+function Profile() {
   const { user, signOut } = useAuthenticator((context) => [context.user]);
 
   return (

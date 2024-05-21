@@ -11,13 +11,24 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as SignupImport } from './routes/signup'
+import { Route as SigninImport } from './routes/signin'
 import { Route as PostsImport } from './routes/posts'
 import { Route as ProtectedImport } from './routes/_protected'
 import { Route as IndexImport } from './routes/index'
-import { Route as ProtectedLayoutBImport } from './routes/_protected/layout-b'
-import { Route as ProtectedHomeImport } from './routes/_protected/home'
+import { Route as ProtectedProfileImport } from './routes/_protected/profile'
 
 // Create/Update Routes
+
+const SignupRoute = SignupImport.update({
+  path: '/signup',
+  getParentRoute: () => rootRoute,
+})
+
+const SigninRoute = SigninImport.update({
+  path: '/signin',
+  getParentRoute: () => rootRoute,
+})
 
 const PostsRoute = PostsImport.update({
   path: '/posts',
@@ -34,13 +45,8 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 })
 
-const ProtectedLayoutBRoute = ProtectedLayoutBImport.update({
-  path: '/layout-b',
-  getParentRoute: () => ProtectedRoute,
-})
-
-const ProtectedHomeRoute = ProtectedHomeImport.update({
-  path: '/home',
+const ProtectedProfileRoute = ProtectedProfileImport.update({
+  path: '/profile',
   getParentRoute: () => ProtectedRoute,
 })
 
@@ -48,11 +54,10 @@ const ProtectedHomeRoute = ProtectedHomeImport.update({
 
 export const routeTree = rootRoute.addChildren({
   IndexRoute,
-  ProtectedRoute: ProtectedRoute.addChildren({
-    ProtectedHomeRoute,
-    ProtectedLayoutBRoute,
-  }),
+  ProtectedRoute: ProtectedRoute.addChildren({ ProtectedProfileRoute }),
   PostsRoute,
+  SigninRoute,
+  SignupRoute,
 })
 
 /* prettier-ignore-end */
