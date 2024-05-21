@@ -11,7 +11,7 @@ function Home() {
 
   return (
     <>
-      <h2>Welcome, {user.userId}!</h2>
+      <h2>Welcome, {user ? user.userId : "Loading..."}!</h2>
       <button onClick={signOut}>Sign Out</button>
     </>
   );
