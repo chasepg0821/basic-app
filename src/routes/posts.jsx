@@ -1,31 +1,31 @@
 import React from "react";
-import { useStore } from "@tanstack/react-store";
 import { createFileRoute } from '@tanstack/react-router';
-
-import { store } from '../store'
+import { useRecoilState } from "recoil";
+import { dcCompState } from "../atoms";
 
 export const Route = createFileRoute('/posts')({
   component: Counter
 })
 
-const Display = ({ animal }) => {
-  const count = useStore(store, (state) => state[animal]);
-  return <div>{`${animal}: ${count}`}</div>;
-};
 
-const updateState = (animal) => {
-  store.setState((state) => {
-    return {
-      ...state,
-      [animal]: state[animal] + 1,
-    };
-  });
-};
-const Increment = ({ animal }) => (
-  <button onClick={() => updateState(animal)}>My Friend Likes {animal}</button>
-);
 
 function Counter() {
+  const [counterState, setCounterState] = useRecoilState(dcCompState)
+
+  const Display = ({ animal }) => {
+    const count = counterState[animal];
+    return <div>{`${animal}: ${count}`}</div>;
+  };
+
+  const Increment = ({ animal }) => (
+   <button onClick={() => setCounterState({...counterState, [animal]: counterState[animal]+1})}>My Friend Likes {animal}</button>
+  );
+
+  const Clear = () => {
+    return <button onClick={() => setCounterState({dogs: 0, cats: 0})}>Reset</button>
+  }
+
+
   return (
     <div>
       <h1>How many of your friends like cats or dogs?</h1>
@@ -37,6 +37,7 @@ function Counter() {
       <Display animal="dogs" />
       <Increment animal="cats" />
       <Display animal="cats" />
+      <Clear />
     </div>
   );
 }
