@@ -15,7 +15,24 @@
       "function": {
         "team00basicappc39d8893": {
           "deploymentBucketName": "amplify-team00basicapp-dev-fe5f2-deployment",
-          "s3Key": "amplify-builds/team00basicappc39d8893-4b56657a7468372b3368-build.zip"
+          "s3Key": "amplify-builds/team00basicappc39d8893-6a2b346c30792f4b4d46-build.zip"
+        },
+        "Team00BasicAppPosts": {},
+        "Team00BAPublicGroups": {
+          "deploymentBucketName": "amplify-team00basicapp-dev-fe5f2-deployment",
+          "s3Key": "amplify-builds/Team00BAPublicGroups-424c6b4e6f2b58676662-build.zip"
+        },
+        "Team00BAPrivateGroups": {
+          "deploymentBucketName": "amplify-team00basicapp-dev-fe5f2-deployment",
+          "s3Key": "amplify-builds/Team00BAPrivateGroups-62757738386351385a48-build.zip"
+        },
+        "Team00BAGroupInfo": {
+          "deploymentBucketName": "amplify-team00basicapp-dev-fe5f2-deployment",
+          "s3Key": "amplify-builds/Team00BAGroupInfo-44675251734352624f38-build.zip"
+        },
+        "Team00BAGroupPosts": {
+          "deploymentBucketName": "amplify-team00basicapp-dev-fe5f2-deployment",
+          "s3Key": "amplify-builds/Team00BAGroupPosts-306a74652f6f42487a4b-build.zip"
         }
       },
       "api": {

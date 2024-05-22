@@ -7,6 +7,34 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/groups/public": {
+      "name": "/groups/public",
+      "lambdaFunction": "Team00BAPublicGroups",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/groups/private": {
+      "name": "/groups/private",
+      "lambdaFunction": "Team00BAPrivateGroups",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/groups/{id}": {
+      "name": "/groups/{id}",
+      "lambdaFunction": "Team00BAGroupInfo",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/posts/{groupID}": {
+      "name": "/posts/{groupID}",
+      "lambdaFunction": "Team00BAGroupPosts",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }
