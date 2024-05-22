@@ -1,4 +1,4 @@
-import { atom, selector } from "recoil"
+import { atom } from "recoil"
 
 const localStorageEffect = key => ({setSelf, onSet}) => {
     const savedValue = localStorage.getItem(key)

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Outlet, createFileRoute } from '@tanstack/react-router'
+import { Navigate, Outlet, createFileRoute } from '@tanstack/react-router'
 import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react'
 
 export const Route = createFileRoute('/_protected')({
@@ -13,7 +13,7 @@ function ProtectedComponent() {
  return (
     <>
       {authStatus === 'configuring' && 'Loading...'}
-      {authStatus !== 'authenticated' ? <Authenticator /> : <Outlet />}
+      {authStatus !== 'authenticated' ? <Navigate to="/signin" /> : <Outlet />}
     </>
  );
 }
