@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Navigate, Outlet, createFileRoute } from '@tanstack/react-router'
-import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react'
+import { useAuthenticator } from '@aws-amplify/ui-react'
 
 export const Route = createFileRoute('/_protected')({
   component: ProtectedComponent,

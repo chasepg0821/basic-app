@@ -5,10 +5,9 @@ import { Authenticator } from '@aws-amplify/ui-react';
 import { RouterProvider, createRouter } from '@tanstack/react-router'
 import { routeTree } from './routeTree.gen'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-
-import '@aws-amplify/ui-react/styles.css'; 
-import conf from './aws-exports'
 import { RecoilRoot } from 'recoil';
+
+import conf from './aws-exports'
 
 Amplify.configure(conf);
 
@@ -17,6 +16,11 @@ const queryClient = new QueryClient()
 // Set up a Router instance
 const router = createRouter({
   routeTree,
+  context: {
+    queryClient,
+  },
+  defaultPreload: 'intent',
+  defaultPreloadStaleTime: 0
 })
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

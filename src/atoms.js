@@ -36,3 +36,9 @@ export const dcCompState = makeLocalStorageAtom({
     },
     effects: []
 })
+
+export const themeState = makeLocalStorageAtom({
+  key: 'theme',
+  default: 'system',
+  effects:[]
+})
