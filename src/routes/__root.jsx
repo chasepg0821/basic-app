@@ -3,7 +3,7 @@ import {
   Outlet,
   createRootRoute,
 } from '@tanstack/react-router'
-import Layout from '../components/Layout'
+import Layout from '../components/Layout/Layout'
 import { useSetRecoilState } from 'recoil'
 import { themeState } from '../atoms'
 
