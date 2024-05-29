@@ -1,15 +1,17 @@
 import { atom } from "recoil"
 
 const localStorageEffect = key => ({setSelf, onSet}) => {
-    const savedValue = localStorage.getItem(key)
-    if (savedValue != null) {
-      setSelf(JSON.parse(savedValue))
-    }
-    onSet(newValue => {
-      localStorage.setItem(key, JSON.stringify(newValue))
-    })
+  const savedValue = localStorage.getItem(key)
+  if (savedValue != null) {
+    setSelf(JSON.parse(savedValue));
   }
 
+  onSet((newValue, _, isReset) => {
+    isReset
+      ? localStorage.removeItem(key)
+      : localStorage.setItem(key, JSON.stringify(newValue));
+  });
+};
 
 /**
  * options {
@@ -29,7 +31,7 @@ function makeLocalStorageAtom (options) {
 }
 
 export const dcCompState = makeLocalStorageAtom({
-    key: 'dogsvscats',
+    key: "dogsvscats",
     default: {
         dogs: 0,
         cats: 0
@@ -38,7 +40,7 @@ export const dcCompState = makeLocalStorageAtom({
 })
 
 export const themeState = makeLocalStorageAtom({
-  key: 'theme',
-  default: 'system',
+  key: "theme",
+  default: "system",
   effects:[]
 })

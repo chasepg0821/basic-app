@@ -10,11 +10,11 @@ import { Inbox, Mail } from '@mui/icons-material';
 function Layout({children}) {
     const [drawerOpen, setDrawerOpen] =  useState();
     const themeState = useRecoilValue(themeAtom);
-    const prefersDark = useMediaQuery("(prefers-color-scheme: dark)")
 
     const theme = useMemo(
         () => {
             let mode = themeState;
+            const prefersDark = window.matchMedia("(prefers-color-scheme: dark)")
             if (themeState === 'system' && prefersDark) {
                 mode = 'dark';
             }
@@ -31,7 +31,7 @@ function Layout({children}) {
                             })
             return newTheme;
         },
-        [themeState, prefersDark],
+        [themeState],
     );
 
     const handleChangeDrawer = () => {
