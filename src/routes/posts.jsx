@@ -1,16 +1,14 @@
-import React from "react";
+import React from 'react';
 import { createFileRoute } from '@tanstack/react-router';
-import { useRecoilState } from "recoil";
-import { dcCompState } from "../atoms";
+import { useRecoilState } from 'recoil';
+import { dcCompState } from '../atoms';
 
 export const Route = createFileRoute('/posts')({
-  component: Counter
-})
-
-
+  component: Counter,
+});
 
 function Counter() {
-  const [counterState, setCounterState] = useRecoilState(dcCompState)
+  const [counterState, setCounterState] = useRecoilState(dcCompState);
 
   const Display = ({ animal }) => {
     const count = counterState[animal];
@@ -18,13 +16,22 @@ function Counter() {
   };
 
   const Increment = ({ animal }) => (
-   <button onClick={() => setCounterState({...counterState, [animal]: counterState[animal]+1})}>My Friend Likes {animal}</button>
+    <button
+      onClick={() =>
+        setCounterState({ ...counterState, [animal]: counterState[animal] + 1 })
+      }
+    >
+      My Friend Likes {animal}
+    </button>
   );
 
   const Clear = () => {
-    return <button onClick={() => setCounterState({dogs: 0, cats: 0})}>Reset</button>
-  }
-
+    return (
+      <button onClick={() => setCounterState({ dogs: 0, cats: 0 })}>
+        Reset
+      </button>
+    );
+  };
 
   return (
     <div>
@@ -41,4 +48,3 @@ function Counter() {
     </div>
   );
 }
-

@@ -1,15 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-const DrawerList = (
-    <>
-        
-    </>
-  );
+const DrawerList = <></>;
 
-function Drawer({open,modal,onClose}) {
-  return (
-    <div>Drawer</div>
-  )
+function Drawer({ open, modal, onClose }) {
+  return <div>Drawer</div>;
 }
 
-export default Drawer
+export default Drawer;
