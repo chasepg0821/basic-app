@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { signUp } from 'aws-amplify/auth';
 
-export const Route = createFileRoute('/signup')({
+export const Route = createFileRoute('/signup/')({
   component: Signup,
 });
 
@@ -18,7 +18,7 @@ function Signup() {
         },
       },
     });
-    console.log(isSignUpComplete, nextStep);
+    console.log(isSignUpComplete, nextStep, userId);
   }
 
   return (

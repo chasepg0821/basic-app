@@ -10,45 +10,51 @@
 
 // Import Routes
 
-import { Route as rootRoute } from './routes/__root';
-import { Route as SignupImport } from './routes/signup';
-import { Route as SigninImport } from './routes/signin';
-import { Route as PostsImport } from './routes/posts';
-import { Route as ProtectedImport } from './routes/_protected';
-import { Route as IndexImport } from './routes/index';
-import { Route as ProtectedProfileImport } from './routes/_protected/profile';
+import { Route as rootRoute } from './routes/__root'
+import { Route as SigninImport } from './routes/signin'
+import { Route as PostsImport } from './routes/posts'
+import { Route as ProtectedImport } from './routes/_protected'
+import { Route as IndexImport } from './routes/index'
+import { Route as SignupIndexImport } from './routes/signup/index'
+import { Route as SignupConfirmImport } from './routes/signup/confirm'
+import { Route as ProtectedProfileImport } from './routes/_protected/profile'
 
 // Create/Update Routes
-
-const SignupRoute = SignupImport.update({
-  path: '/signup',
-  getParentRoute: () => rootRoute,
-});
 
 const SigninRoute = SigninImport.update({
   path: '/signin',
   getParentRoute: () => rootRoute,
-});
+})
 
 const PostsRoute = PostsImport.update({
   path: '/posts',
   getParentRoute: () => rootRoute,
-});
+})
 
 const ProtectedRoute = ProtectedImport.update({
   id: '/_protected',
   getParentRoute: () => rootRoute,
-});
+})
 
 const IndexRoute = IndexImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
-});
+})
+
+const SignupIndexRoute = SignupIndexImport.update({
+  path: '/signup/',
+  getParentRoute: () => rootRoute,
+})
+
+const SignupConfirmRoute = SignupConfirmImport.update({
+  path: '/signup/confirm',
+  getParentRoute: () => rootRoute,
+})
 
 const ProtectedProfileRoute = ProtectedProfileImport.update({
   path: '/profile',
   getParentRoute: () => ProtectedRoute,
-});
+})
 
 // Create and export the route tree
 
@@ -57,7 +63,8 @@ export const routeTree = rootRoute.addChildren({
   ProtectedRoute: ProtectedRoute.addChildren({ ProtectedProfileRoute }),
   PostsRoute,
   SigninRoute,
-  SignupRoute,
-});
+  SignupConfirmRoute,
+  SignupIndexRoute,
+})
 
 /* prettier-ignore-end */

@@ -2,6 +2,7 @@ import { Divider } from '@aws-amplify/ui-react';
 import {
   Brightness4,
   Brightness5,
+  Logout,
   SettingsBrightness,
 } from '@mui/icons-material';
 import {
@@ -17,6 +18,8 @@ import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 
 import { themeState as themeAtom } from '../../../atoms';
+import { signOut } from 'aws-amplify/auth';
+import { useNavigate, useRouterState } from '@tanstack/react-router';
 
 const colorModes = [
   {
@@ -40,6 +43,12 @@ function AvatarMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [themeState, setThemeState] = useRecoilState(themeAtom);
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
+  
+
+  const handleLogout = async () => {
+    await signOut();
+  }
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -86,20 +95,21 @@ function AvatarMenu() {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={() => navigate({to: '/profile'})}>
           <ListItemIcon>
             <Avatar />
           </ListItemIcon>
           Profile
         </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Avatar />
-          </ListItemIcon>
-          Account
-        </MenuItem>
         <Divider />
         {renderColorModeOptions()}
+        <Divider />
+        <MenuItem onClick={handleLogout}>
+            <ListItemIcon>
+                <Logout />
+            </ListItemIcon>
+            Logout
+        </MenuItem>
       </Menu>
     </>
   );
