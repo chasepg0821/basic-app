@@ -1,4 +1,4 @@
-import { Divider } from '@aws-amplify/ui-react';
+import { Divider, useAuthenticator } from '@aws-amplify/ui-react';
 import {
   Brightness4,
   Brightness5,
@@ -18,8 +18,7 @@ import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 
 import { themeState as themeAtom } from '../../../atoms';
-import { signOut } from 'aws-amplify/auth';
-import { useNavigate, useRouterState } from '@tanstack/react-router';
+import { useNavigate } from '@tanstack/react-router';
 
 const colorModes = [
   {
@@ -42,6 +41,7 @@ const colorModes = [
 function AvatarMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [themeState, setThemeState] = useRecoilState(themeAtom);
+  const { user, signOut } = useAuthenticator((context) => [context.user])
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
   
@@ -83,7 +83,7 @@ function AvatarMenu() {
           aria-haspopup="true"
           aria-expanded={open ? 'true' : undefined}
         >
-          <Avatar sx={{ width: 32, height: 32 }}>T</Avatar>
+          <Avatar sx={{ width: 32, height: 32 }}>{ user ? user.username ?? '' : '' }</Avatar>
         </IconButton>
       </Tooltip>
       <Menu
